@@ -165,19 +165,37 @@ const updateBoardState = function (position) {
 }
 
 const checkGameOver = function () {
-    //Checks the rows and columns for a game over
     let tempBool = false;
 
+    //Checks whatever line is passed into it to see if all elements are matching.
+    const checkLine = function (line) {
+        for (let i = 0; i < line.length - 1; i++) {
+            if (line[i] === line[i + 1]) {
+                tempBool = true;
+            } else {
+                tempBool = false;
+                i = line.length;
+            }
+            if (line[i] === "-") {
+                tempBool = false;
+                i = line.length;
+            }
+        }
+        if (tempBool === true) {
+            isGameOver = true;
+        }
+    }
+    //Checks the rows and columns for a game over
     for (let i = 0; i < advBoardState.rows.length; i++) {
         //Checks row i for a game over
-        checkLine(advBoardState.rows[i], tempBool);
+        checkLine(advBoardState.rows[i]);
 
         //Exits the loop and function if game over is found.
         if (isGameOver) {
             return;
         }
         //Checks col i for a game over
-        checkLine(advBoardState.cols[i], tempBool);
+        checkLine(advBoardState.cols[i]);
 
         //Exits the loop and function if game over is found.
         if (isGameOver) {
@@ -188,13 +206,13 @@ const checkGameOver = function () {
 
     //Checks the diagonals for a game over
     for (let i = 0; i < advBoardState.diag1.length - 1; i++) {
-        checkLine(advBoardState.diag1, tempBool);
+        checkLine(advBoardState.diag1);
     }
     if (isGameOver) {
         return;
     }
     for (let i = 0; i < advBoardState.diag2.length - 1; i++) {
-        checkLine(advBoardState.diag2, tempBool);
+        checkLine(advBoardState.diag2);
     }
     if (isGameOver) {
         return;
@@ -211,22 +229,6 @@ const checkGameOver = function () {
     if (tempBool2 === true) {
         isGameOver = true;
     }
+    
 }
 
-const checkLine = function (line, tempBool) {
-    for (let i = 0; i < line.length - 1; i++) {
-        if (line[i] === line[i + 1]) {
-            tempBool = true;
-        } else {
-            tempBool = false;
-            i = line.length;
-        }
-        if (line[i] === "-") {
-            tempBool = false;
-            i = line.length;
-        }
-    }
-    if (tempBool === true) {
-        isGameOver = true;
-    }
-}
