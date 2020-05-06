@@ -90,10 +90,10 @@ const updateBoardState = function (position) {
 
     //Creates an object to store the advanced position data for the current move
     let advPos = {
-        row: 0,
-        column: 0,
-        diag1: 0,
-        diag2: 0
+        row: -1,
+        column: -1,
+        diag1: -1,
+        diag2: -1
     };
 
     //Sets the advanced position row
@@ -170,74 +170,63 @@ const checkGameOver = function () {
 
     for (let i = 0; i < advBoardState.rows.length; i++) {
         //Checks row i for a game over
-        for (let j = 0; j < advBoardState.rows[i].length - 1; j++) {
-            if (advBoardState.rows[i][j] === advBoardState.rows[i][j + 1]) {
-                tempBool = true;
-            } else {
-                tempBool = false;
-                j = advBoardState.rows[i].length;
-            }
-            if (advBoardState.rows[i][j] === "-") {
-                tempBool = false;
-                j = advBoardState.rows[i].length;
-            }
-        }
+        checkLine(advBoardState.rows[i], tempBool);
+
         //Exits the loop and function if game over is found.
-        if (tempBool === true) {
-            isGameOver = true;
+        if (isGameOver) {
             return;
         }
         //Checks col i for a game over
-        for (let j = 0; j < advBoardState.cols[i].length - 1; j++) {
-            if (advBoardState.cols[i][j] === advBoardState.cols[i][j + 1]) {
-                tempBool = true;
-            } else {
-                tempBool = false;
-                j = advBoardState.rows[i].length;
-            }
-            if (advBoardState.rows[i][j] === "-") {
-                tempBool = false;
-                j = advBoardState.rows[i].length;
-            }
-        }
+        checkLine(advBoardState.cols[i], tempBool);
+
         //Exits the loop and function if game over is found.
-        if (tempBool === true) {
-            isGameOver = true;
+        if (isGameOver) {
             return;
         }
+        
     }
 
     //Checks the diagonals for a game over
     for (let i = 0; i < advBoardState.diag1.length - 1; i++) {
-        if (advBoardState.diag1[i] === advBoardState.diag1[i + 1]) {
-            tempBool = true;
-        } else {
-            tempBool = false;
-            i = advBoardState.diag1.length;
-        }
-        if (advBoardState.diag1[i] === "-") {
-            tempBool = false;
-            i = advBoardState.diag1.length;
-        }
+        checkLine(advBoardState.diag1, tempBool);
     }
-    if (tempBool === true) {
-        isGameOver = true;
+    if (isGameOver) {
         return;
     }
     for (let i = 0; i < advBoardState.diag2.length - 1; i++) {
-        if (advBoardState.diag2[i] === advBoardState.diag2[i + 1]) {
+        checkLine(advBoardState.diag2, tempBool);
+    }
+    if (isGameOver) {
+        return;
+    }
+
+    //Checks to see if the board is full and if it is flags a game over.
+    let tempBool2 = true;
+    for(let i = 0; i < boardState.length; i++) {
+        if (boardState[i] === "-"){
+            tempBool2 = false;
+            i = boardState.length;
+        }
+    }
+    if (tempBool2 === true) {
+        isGameOver = true;
+    }
+}
+
+const checkLine = function (line, tempBool) {
+    for (let i = 0; i < line.length - 1; i++) {
+        if (line[i] === line[i + 1]) {
             tempBool = true;
         } else {
             tempBool = false;
-            i = advBoardState.diag2.length;
+            i = line.length;
         }
-        if (advBoardState.diag2[i] === "-") {
+        if (line[i] === "-") {
             tempBool = false;
-            i = advBoardState.diag2.length;
+            i = line.length;
         }
     }
     if (tempBool === true) {
         isGameOver = true;
-        return;
     }
 }
