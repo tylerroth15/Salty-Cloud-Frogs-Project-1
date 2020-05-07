@@ -153,9 +153,7 @@ const updateBoardState = function (position) {
         pageNumber = 1;
         isGameOver = false;
         console.log("game over");
-        $(gameDiv).empty();
-        $("#game-board").empty();
-        $("#select-game").attr("style", "");
+        render();
         return;
     }
     // Changes the current turn.
