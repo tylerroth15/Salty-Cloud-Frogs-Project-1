@@ -1,6 +1,6 @@
 //Placeholder UI to test the tic-tac-toe.
 // 0 = nickname page, 1 = game select, 2 = tic-tac-toe
-let pageNumber = 2
+let pageNumber = 1;
 let gameDiv = $("<div>");
 
 //Generic render function that will call more specific render functions by checking the pageNumber
@@ -39,9 +39,10 @@ const renderTicTacToe = function() {
                         .text("Turn: ")
                         .append($("<span>")
                             .attr("id", "turnDisplay")
-                            .text("O")))
+                            .text("O")));
             }
         }
     }
-    $("body").append(gameDiv);
+    $("#select-game").attr("style", "display:none");
+    $("#game-board").append(gameDiv);
 }
