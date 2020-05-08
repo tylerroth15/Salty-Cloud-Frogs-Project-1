@@ -2,11 +2,14 @@
 <html lang="en">
 
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Parallax Template - Materialize</title>
+  
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Salty Cloud Frog's Project 1</title>
+
 
   <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet"> 
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="assets/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
   <link href="assets/css/stylea.css" type="text/css" rel="stylesheet" media="screen,projection" />
@@ -16,7 +19,7 @@
 <body>
   <nav class="white" role="navigation">
     <div class="nav-wrapper container">
-      <a id="logo-container" href="#" class="brand-logo">Website Name</a>
+      <a id="logo-container" href="#" class="brand-logo">Game API Project</a>
       <ul class="right hide-on-med-and-down">
         <li><a href="#">Highest Score</a></li>
       </ul>
@@ -33,8 +36,18 @@
           <h5 class="header col s12 light">Select a game below and see how you rank</h5>
         </div>
         <div class="row center">
-          <a href="http://materializecss.com/getting-started.html" id="download-button"
-            class="btn-large waves-effect waves-light teal lighten-1">Get Started</a>
+
+          <h4 class="input-field col s4 offset-m4" id = "welcome"></h4>
+          <!-- User Input Entry, will need to be hidden and replaced if the user is already signed in.-->
+          <br><br>
+          <div class="input-field col s4 offset-m4" id = "newUserOnly">
+            <input value="Alvin" id="get-username" type="text" class="validate">
+            <label for="input">Your Name</label>
+            <button id="enterBtn" class="btn-large waves-effect waves-light teal lighten-1" data-id= "get-username">Enter</button>
+            
+          </div>
+          
+
         </div>
         <br><br>
 
@@ -62,7 +75,7 @@
             </div>
           </div>
         </div>
-
+        
         <div class="col s12 m3">
           <div class="card">
             <div class="card-image">
@@ -74,6 +87,7 @@
             </div>
             <div class="card-action">
               <a href="#">Click To Play</a>
+
             </div>
           </div>
         </div>
@@ -111,17 +125,17 @@
 
   </footer>
 
-  <!-- Imports Jquery and Materialize js-->
-  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+ <!-- Imports our javascript files to read properly start in script.js -->
+ <script src="ui.js"></script>
+ <script src="tic-tac-toe.js"></script>
+ <script src="script.js"></script>
+ <script src="userTracking.js"></script>
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="js/materialize.js"></script>
   <script src="js/init.js"></script>
 
-  <!-- Imports our javascript files to read properly start in script.js -->
-  <script src="ui.js"></script>
-  <script src="tic-tac-toe.js"></script>
-  <script src="script.js"></script>
 
-
-</body>
-
+  </body>
 </html>
