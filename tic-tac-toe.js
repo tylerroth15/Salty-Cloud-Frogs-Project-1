@@ -150,7 +150,10 @@ const updateBoardState = function (position) {
     // Checks the boardstate to see if the game is over.
     checkGameOver();
     if (isGameOver) {
-        alert("Game Over");
+        pageNumber = 1;
+        isGameOver = false;
+        console.log("game over");
+        render();
         return;
     }
     // Changes the current turn.
