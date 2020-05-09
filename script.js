@@ -21,5 +21,8 @@ const clickHandler = function(e) {
 
 
 //Calls the render function in ui.js and sets up the clickhandler.
-render();
-$("#main").on("click", clickHandler);
+$(document).ready(function() {
+    welcome();
+    render();
+    $("#main").on("click", clickHandler);
+});
