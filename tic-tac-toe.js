@@ -1,4 +1,5 @@
 let boardState;
+let advBoardState;
 let tttTurn;
 let player;
 let tttURL;

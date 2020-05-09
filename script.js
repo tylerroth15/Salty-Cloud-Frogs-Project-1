@@ -24,11 +24,18 @@ const clickHandler = function(e) {
     }
 }
 
+const keyHandler = function(e) {
+    e.preventDefault();
+    if (e.key >= 1 && e.key <= 9) {
+        sudokuKeyHandler(e.key);
+    }
+}
 
 const init = function(){
     welcome();
     render();
     $("#main").on("click", clickHandler);
+    $("#main").on("keydown", keyHandler);
 }
 
 
