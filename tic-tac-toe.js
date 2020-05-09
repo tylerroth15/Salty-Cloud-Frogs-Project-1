@@ -152,7 +152,7 @@ const updateBoardState = function (position) {
     if (isGameOver) {
         pageNumber = 1;
         isGameOver = false;
-        console.log("game over");
+        updateScores(tttTurn);
         render();
         return;
     }
@@ -230,6 +230,7 @@ const checkGameOver = function () {
         }
     }
     if (tempBool2 === true) {
+        tttTurn = "-";
         isGameOver = true;
     }
     

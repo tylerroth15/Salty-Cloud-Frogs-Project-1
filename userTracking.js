@@ -1,3 +1,7 @@
+const wins = 0;
+const losses = 0;
+const ties = 0;
+
 const welcome = function () {
 
     //add lines for hiding the game cards
@@ -44,4 +48,8 @@ const welcome = function () {
         });
     }
 
+}
+
+const updateScores = function(){
+    console.log(tttTurn + " is the winner")
 }
