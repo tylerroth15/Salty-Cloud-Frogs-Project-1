@@ -3,3 +3,60 @@
     font-family: 'Press Start 2P', sans-serif;
     
 }
+body{
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main{
+    flex: 1 0 auto;
+}
+
+.brand-logo{
+    color: white !important; 
+    font-size: 25px !important;
+}
+
+a{
+    color: white !important;
+    font-size: 15px !important;
+}
+
+h1{
+    font-size: 40px !important;
+}
+
+h2{
+    font-size: 25px !important;
+}
+
+h3{
+    font-size: 20px !important;
+}
+
+h5{
+    font-size: 10px !important;
+}
+
+p{
+    font-size: 8px !important;
+}
+
+.link{
+    font-size: 8px !important;
+}
+
+footer{
+    background-color: #2962ff !important;
+}
+
+.gameCard{
+    color: black !important;
+    font-size: 20px !important;
+}
+
+#game-board{
+    text-align: center;
+}
+

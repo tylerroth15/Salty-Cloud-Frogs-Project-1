@@ -150,9 +150,9 @@ const updateBoardState = function (position) {
     // Checks the boardstate to see if the game is over.
     checkGameOver();
     if (isGameOver) {
-        updateScores(tttTurn);
         pageNumber = 1;
         isGameOver = false;
+        updateScores(tttTurn);
         render();
         return;
     }
