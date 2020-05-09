@@ -22,7 +22,7 @@ const render = function () {
 const renderTicTacToe = function () {
     for (let i = 0; i < 9; i++) {
         let newBtn = $("<button>");
-        let baseStlye = "width: 50px; height: 50px;";
+        let baseStlye = "width: 150px; height: 150px;";
         gameDiv
             .append(newBtn
                 .text("")
