@@ -50,3 +50,13 @@ p{
 footer{
     background-color: #2962ff !important;
 }
+
+.gameCard{
+    color: black !important;
+    font-size: 20px !important;
+}
+
+#game-board{
+    text-align: center;
+}
+
