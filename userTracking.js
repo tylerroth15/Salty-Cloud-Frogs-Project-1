@@ -6,7 +6,7 @@ const welcome = function () {
     //welcoming the user to the site.  If there's no value in local storage the user will be greeted as a stranger and asked to enter their username, which is then stored
     var checkName = localStorage.getItem("name");
     console.log(checkName);
-    if (checkName == null || checkName == "null") {
+    if (checkName == null || checkName == "null" || checkName == "") {
 
         $("#welcome").text("Hi, Stranger!");
 
@@ -14,6 +14,7 @@ const welcome = function () {
             event.preventDefault();
             console.log("clicked");
             $("#newUserOnly").attr("style", "display:block")
+
 
             var username = $("#get-username").val().trim();
             localStorage.setItem("name", username);
@@ -28,6 +29,19 @@ const welcome = function () {
         $("#welcome").text("Hello " + checkName + ", shall we play a game?");
         $(".card").attr("style", "display:block");
 
+        var newUser = $("<a>").text("Not " + checkName + "? Click Here!");
+        //newUser.attr("style" , ) finish styling
+        newUser.attr("href", "#").attr("id", "newUser");
+        
+        $("#welcome").append(newUser);
+        $("#newUser").on("click", function (event) {
+            event.preventDefault();
+            localStorage.setItem("name", "");
+            welcome();
+            $("#newUserOnly").attr("style", "display:block");
+
         //Not User?  Need a clickable link to clear Local Storage and re-run the welcome function.
+        });
     }
+
 }

@@ -17,12 +17,12 @@ const clickHandler = function(e) {
 }
 
 
-
-
-
-//Calls the render function in ui.js and sets up the clickhandler.
-$(document).ready(function() {
+const init = function(){
     welcome();
     render();
     $("#main").on("click", clickHandler);
-});
+}
+
+
+//Calls the render function in ui.js and sets up the clickhandler.
+$(document).ready(init);
