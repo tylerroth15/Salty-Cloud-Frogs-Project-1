@@ -28,9 +28,9 @@ const playTicTacToe = function () {
         diag2: ["-", "-", "-"]
     }
     //Sets up turn variables
-    tttTurn = "O";
-    playerTurn = "O";
-    cpuTurn = "X";
+    tttTurn = "X";
+    playerTurn = "X";
+    cpuTurn = "O";
 
     //Sets the base tttURL. Final version will always look like https://stujo-tic-tac-toe-stujo-v1.p.rapidapi.com/${boardState}/${cpuTurn}
     tttURL = "https://stujo-tic-tac-toe-stujo-v1.p.rapidapi.com/";
@@ -150,9 +150,9 @@ const updateBoardState = function (position) {
     // Checks the boardstate to see if the game is over.
     checkGameOver();
     if (isGameOver) {
+        updateScores(tttTurn);
         pageNumber = 1;
         isGameOver = false;
-        console.log("game over");
         render();
         return;
     }
@@ -230,6 +230,7 @@ const checkGameOver = function () {
         }
     }
     if (tempBool2 === true) {
+        tttTurn = "-";
         isGameOver = true;
     }
     

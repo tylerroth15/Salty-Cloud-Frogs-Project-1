@@ -11,6 +11,9 @@ const render = function () {
     if (pageNumber == 2) {
         renderTicTacToe();
     }
+    if (pageNumber == 3) {
+        renderSudoku();
+    }
 }
 
 //Renders my really bad looking TicTacToe Board. Fix this up and make it look nice. :)
@@ -47,7 +50,7 @@ const renderTicTacToe = function () {
                         .text("Turn: ")
                         .append($("<span>")
                             .attr("id", "turnDisplay")
-                            .text("O")));
+                            .text("X")));
             }
         }
     }
@@ -57,4 +60,49 @@ const renderTicTacToe = function () {
 const renderMainPage = function () {
     $(gameDiv).empty();
     $("#select-game").attr("style", "");
+}
+
+const renderSudoku = function () {
+    let sdkBlockRow = $("<div>").attr("class", "row").attr("style", "padding: 0px; margin-bottom: 0px;");
+    for (let i = 0; i < 9; i++) {
+        let sdkBlockCol = $("<div>").attr("class", "col").attr("style", "border: 2px solid");
+        let sdkRow = $("<div>").attr("class", "row").attr("style", "padding: 0px; margin-bottom: 0px;");
+        let colCount = 0;
+        for (let j = 0; j < 9; j++) {
+            let newBtn = $("<button>");
+            let baseStlye = "width: 50px; height: 50px; padding: 0px;";
+            sdkRow
+            .append($("<div>")
+                .attr("class", "col")
+                .attr("style", "padding: 0px")
+                .attr("id", `sdkB${i}R${j%3}C${colCount}`)
+                .append(newBtn
+                    .text("")
+                    .attr("data-sdkpos", (i*9)+j)
+                    .attr("class", "Button waves-effect waves-teal btn-flat")
+                    .attr("id", `sdkBtn${(i*9)+j}`)
+                    .attr("style", baseStlye)));
+            if (j < 6) {
+                baseStlye += "border-bottom: 1px solid black;";
+                newBtn.attr("style", baseStlye);
+            }
+            if (colCount == 1) {
+                newBtn.attr("style", `${baseStlye}border-left: 1px solid black;`);
+            }
+            if (colCount == 2) {
+                colCount = -1;
+                newBtn.attr("style", `${baseStlye}border-left: 1px solid black;`);
+                sdkBlockCol.append(sdkRow);
+                sdkRow = $("<div>").attr("class", "row").attr("style", "padding: 0px; margin-bottom: 0px;");
+            }
+            colCount++;
+        }
+        sdkBlockRow.append(sdkBlockCol);
+        sdkBlockCol = $("<div>").attr("class", "col").attr("style", "padding: 0px");
+        if(i == 2 || i == 5 || i == 8) {
+            gameDiv.append(sdkBlockRow);
+            sdkBlockRow = $("<div>").attr("class", "row").attr("style", "padding: 0px; margin-bottom: 0px;");    
+        }
+    }
+    $("#select-game").attr("style", "display:none");
 }
