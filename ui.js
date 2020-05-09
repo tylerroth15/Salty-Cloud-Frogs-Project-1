@@ -22,7 +22,7 @@ const render = function () {
 const renderTicTacToe = function () {
     for (let i = 0; i < 9; i++) {
         let newBtn = $("<button>");
-        let baseStlye = "width: 30px; height: 30px;";
+        let baseStlye = "width: 50px; height: 50px;";
         gameDiv
             .append(newBtn
                 .text("")
@@ -31,15 +31,15 @@ const renderTicTacToe = function () {
                 .attr("id", `tttBtn${i}`)
                 .attr("style", baseStlye));
         if (i < 6) {
-            baseStlye += "border-bottom: 1px solid black;";
+            baseStlye += "border-bottom: 3px solid black;";
             newBtn.attr("style", baseStlye);
         }
         if (i === 1 || i === 4 || i === 7) {
-            newBtn.attr("style", baseStlye + "border-left: 1px solid black;");
+            newBtn.attr("style", baseStlye + "border-left: 3px solid black;");
         }
         if (i === 2 || i === 5 || i === 8) {
             gameDiv.append($("<br>"));
-            newBtn.attr("style", baseStlye + "border-left: 1px solid black;");
+            newBtn.attr("style", baseStlye + "border-left: 3px solid black;");
             if (i === 8) {
                 // Turn display which includes a span with this ID of turnDisplay.
                 gameDiv
