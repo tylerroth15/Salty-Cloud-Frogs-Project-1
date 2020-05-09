@@ -25,7 +25,7 @@ const render = function () {
 const renderTicTacToe = function () {
     for (let i = 0; i < 9; i++) {
         let newBtn = $("<button>");
-        let baseStlye = "width: 50px; height: 50px;";
+        let baseStlye = "width: 150px; height: 150px; font-size: 75px;";
         gameDiv
             .append(newBtn
                 .text("")
@@ -98,11 +98,22 @@ const renderSudoku = function () {
             colCount++;
         }
         sdkBlockRow.append(sdkBlockCol);
-        sdkBlockCol = $("<div>").attr("class", "col").attr("style", "padding: 0px");
         if(i == 2 || i == 5 || i == 8) {
+            sdkBlockRow.prepend($("<div>").attr("class", "col s4"));
             gameDiv.append(sdkBlockRow);
             sdkBlockRow = $("<div>").attr("class", "row").attr("style", "padding: 0px; margin-bottom: 0px;");    
         }
     }
+    for (let i = 1; i < 10; i++) {
+        let newBtn = $("<button>")
+            .attr("class", "Button waves-effect waves-teal btn-flat sdkInput")
+            .attr("id", `sdkInput${i}`)
+            .attr("data-response", i)
+            .attr("style", "font-size: 20px")
+            .text(i);
+        sdkBlockRow.append(newBtn);
+        gameDiv.append(sdkBlockRow);
+    }
+    gameDiv.append(sdkBlockRow);
     $("#select-game").attr("style", "display:none");
 }

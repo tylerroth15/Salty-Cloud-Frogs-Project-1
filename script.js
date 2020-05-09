@@ -9,17 +9,28 @@ const clickHandler = function(e) {
                 render();
                 playTicTacToe();
             }
+            if($(e.target).attr("id") === "sdkBtn") {
+                pageNumber = 3;
+                render();
+                playSudoku();
+            }
         }
         if (pageNumber === 2) {
             ticTacToeClickHandler(e.target);
+        } 
+        if (pageNumber === 3) {
+            sudokuClickHandler(e.target);
         }
     }
 }
 
 
-
+const init = function(){
+    welcome();
+    render();
+    $("#main").on("click", clickHandler);
+}
 
 
 //Calls the render function in ui.js and sets up the clickhandler.
-render();
-$("#main").on("click", clickHandler);
+$(document).ready(init);
