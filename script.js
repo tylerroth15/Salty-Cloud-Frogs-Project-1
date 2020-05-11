@@ -9,18 +9,33 @@ const clickHandler = function(e) {
                 render();
                 playTicTacToe();
             }
+            if($(e.target).attr("id") === "sdkBtn") {
+                pageNumber = 3;
+                render();
+                playSudoku();
+            }
         }
         if (pageNumber === 2) {
             ticTacToeClickHandler(e.target);
+        } 
+        if (pageNumber === 3) {
+            sudokuClickHandler(e.target);
         }
     }
 }
 
+const keyHandler = function(e) {
+    e.preventDefault();
+    if (e.key >= 1 && e.key <= 9) {
+        sudokuKeyHandler(e.key);
+    }
+}
 
 const init = function(){
     welcome();
     render();
     $("#main").on("click", clickHandler);
+    $("#main").on("keydown", keyHandler);
 }
 
 

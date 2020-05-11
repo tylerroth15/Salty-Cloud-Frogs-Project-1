@@ -56,7 +56,9 @@ footer{
     font-size: 20px !important;
 }
 
-#game-board{
+#game-board,
+.row,
+.col{
     text-align: center;
 }
 

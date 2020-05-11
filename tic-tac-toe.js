@@ -1,4 +1,5 @@
 let boardState;
+let advBoardState;
 let tttTurn;
 let player;
 let tttURL;
@@ -28,9 +29,9 @@ const playTicTacToe = function () {
         diag2: ["-", "-", "-"]
     }
     //Sets up turn variables
-    tttTurn = "O";
-    playerTurn = "O";
-    cpuTurn = "X";
+    tttTurn = "X";
+    playerTurn = "X";
+    cpuTurn = "O";
 
     //Sets the base tttURL. Final version will always look like https://stujo-tic-tac-toe-stujo-v1.p.rapidapi.com/${boardState}/${cpuTurn}
     tttURL = "https://stujo-tic-tac-toe-stujo-v1.p.rapidapi.com/";
