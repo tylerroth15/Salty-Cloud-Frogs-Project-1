@@ -1,6 +1,9 @@
 .container{
     margin: auto;
-    font-family: 'Press Start 2P', sans-serif;
+    color:#ff0070;
+    /* box-shadow: 0 0 10px #4666ff, 0 0 10px #4666ff; */
+    text-shadow: 0 0 8px #ff0080, 0 0 10px #ff0080;
+    /* font-size: 80px; */
     
 }
 body{
@@ -9,26 +12,33 @@ body{
     flex-direction: column;
 }
 
+/* .card{
+    background-color: black;
+    color: #ff0070
+} */
 main{
     flex: 1 0 auto;
 }
 
 .brand-logo{
-    color: white !important; 
+    color: #5ff5fd !important; 
     font-size: 25px !important;
 }
 
 a{
-    color: white !important;
+    color: #5ff5fd !important;
     font-size: 15px !important;
+    text-shadow: 0 0 8px #5ff5fd, 0 0 10px #5ff5fd;
 }
 
 h1{
-    font-size: 40px !important;
+    font-size: 50px !important;
+    color: #5ff5fd !important;
+    text-shadow: 0 0 8px #5ff5fd, 0 0 10px #5ff5fd !important;
 }
 
 h2{
-    font-size: 25px !important;
+    font-size: 45px !important;
 }
 
 h3{
@@ -47,18 +57,31 @@ p{
     font-size: 8px !important;
 }
 
+label{
+    color: #6dcb22 !important;
+    text-shadow: 0 0 8px #6dcb22, 0 0 10px #6dcb22 !important;
+}
+#enterBtn{
+    background-color: #6dcb22 !important;
+}
 footer{
     background-color: #2962ff !important;
 }
+.card{
+    background-color: transparent !important;
+}
 
 .gameCard{
-    color: black !important;
+    color: #5ff5fd!important;
     font-size: 20px !important;
-}
+    background-color: transparent !important;
+
 
 #game-board,
 .row,
 .col{
     text-align: center;
+    
 }
+
 
