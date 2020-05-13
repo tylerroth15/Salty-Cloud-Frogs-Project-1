@@ -108,7 +108,7 @@ const updateBoardState = function (position) {
     advBoardState.cols[x][y] = val;
     if (x === y){
         advBoardState.diag1[x] = val;
-    } else if (x === (2-y)) {
+    } else if (x == (2-y)) {
         advBoardState.diag2[y] = val;
     }
 
