@@ -23,6 +23,8 @@ const render = function () {
 // - Each button needs a data-tttPos attribute with a value of i.
 // - Include a <span> in the turn display which will display the current turn. ID: turnDisplay
 const renderTicTacToe = function () {
+    let x = 0;
+    let y = 0;
     for (let i = 0; i < 9; i++) {
         let newBtn = $("<button>");
         let baseStlye = "width: 150px; height: 150px; font-size: 75px;";
@@ -30,19 +32,25 @@ const renderTicTacToe = function () {
             .append(newBtn
                 .text("")
                 .attr("data-tttpos", i)
+                .attr("data-tttx", x)
+                .attr("data-ttty", y)
+                .attr("data-tttval", "-")
                 .attr("class", "Button waves-effect waves-teal btn-flat")
                 .attr("id", `tttBtn${i}`)
                 .attr("style", baseStlye));
         if (i < 6) {
-            baseStlye += "border-bottom: 3px solid black;";
+            baseStlye += "border-bottom: 1px solid #6dcb22;";
             newBtn.attr("style", baseStlye);
         }
         if (i === 1 || i === 4 || i === 7) {
-            newBtn.attr("style", baseStlye + "border-left: 3px solid black;");
+            newBtn.attr("style", baseStlye + "border-left: 1px solid #6dcb22;");
         }
+        x++;
         if (i === 2 || i === 5 || i === 8) {
+            x = 0;
+            y++;
             gameDiv.append($("<br>"));
-            newBtn.attr("style", baseStlye + "border-left: 3px solid black;");
+            newBtn.attr("style", baseStlye + "border-left: 1px solid #6dcb22;");
             if (i === 8) {
                 // Turn display which includes a span with this ID of turnDisplay.
                 gameDiv
@@ -123,7 +131,7 @@ const renderSudoku = function () {
             .attr("class", "Button waves-effect waves-teal btn-flat sdkInput")
             .attr("id", `sdkInput${i}`)
             .attr("data-response", i)
-            .attr("style", "font-size: 20px")
+            .attr("style", "font-size: 30px")
             .text(i);
         sdkBlockRow.append(newBtn);
         gameDiv.append(sdkBlockRow);
