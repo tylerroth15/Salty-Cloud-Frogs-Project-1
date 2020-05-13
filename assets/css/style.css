@@ -75,13 +75,17 @@ footer{
     color: #5ff5fd!important;
     font-size: 20px !important;
     background-color: transparent !important;
-
+}
 
 #game-board,
 .row,
 .col{
     text-align: center;
     
+
 }
+
+
+
 
 

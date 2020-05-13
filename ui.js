@@ -39,18 +39,18 @@ const renderTicTacToe = function () {
                 .attr("id", `tttBtn${i}`)
                 .attr("style", baseStlye));
         if (i < 6) {
-            baseStlye += "border-bottom: 3px solid black;";
+            baseStlye += "border-bottom: 1px solid #6dcb22;";
             newBtn.attr("style", baseStlye);
         }
         if (i === 1 || i === 4 || i === 7) {
-            newBtn.attr("style", baseStlye + "border-left: 3px solid black;");
+            newBtn.attr("style", baseStlye + "border-left: 1px solid #6dcb22;");
         }
         x++;
         if (i === 2 || i === 5 || i === 8) {
             x = 0;
             y++;
             gameDiv.append($("<br>"));
-            newBtn.attr("style", baseStlye + "border-left: 3px solid black;");
+            newBtn.attr("style", baseStlye + "border-left: 1px solid #6dcb22;");
             if (i === 8) {
                 // Turn display which includes a span with this ID of turnDisplay.
                 gameDiv
@@ -131,7 +131,7 @@ const renderSudoku = function () {
             .attr("class", "Button waves-effect waves-teal btn-flat sdkInput")
             .attr("id", `sdkInput${i}`)
             .attr("data-response", i)
-            .attr("style", "font-size: 20px")
+            .attr("style", "font-size: 30px")
             .text(i);
         sdkBlockRow.append(newBtn);
         gameDiv.append(sdkBlockRow);
