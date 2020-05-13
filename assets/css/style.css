@@ -12,6 +12,7 @@ body{
     flex-direction: column;
 }
 
+
 /* .card{
     background-color: black;
     color: #ff0070
@@ -65,7 +66,7 @@ label{
     background-color: #6dcb22 !important;
 }
 footer{
-    background-color: #2962ff !important;
+    background-color: #030303 !important;
 }
 .card{
     background-color: transparent !important;
@@ -76,6 +77,7 @@ footer{
     font-size: 20px !important;
     background-color: transparent !important;
 
+}
 
 #game-board,
 .row,

@@ -19,12 +19,27 @@ const welcome = function () {
             console.log("clicked");
             $("#newUserOnly").attr("style", "display:block")
 
-
+            
             var username = $("#get-username").val().trim();
-            localStorage.setItem("name", username);
-            $("#newUserOnly").attr("style", "display:none");
-            $("#welcome").text("Hello " + username + ", shall we play a game?");
-            $(".card").attr("style", "display:block")
+
+            if (username === '') {
+                console.log('Oops, looks like something is missing!');
+                return false;
+            } else {
+                console.log("Yay, we're good to go!");
+
+                
+                localStorage.setItem("name", username);
+                $("#newUserOnly").attr("style", "display:none");
+                $("#welcome").text("Hello " + username + ", shall we play a game?");
+                $(".card").attr("style", "display:block")
+
+                var saveData = [{name, username}, [0,0]]
+                localStorage.setItem(username + " saveData", saveData[1]);
+                return true;
+            }
+            
+            
 
         });
     } else {
@@ -33,7 +48,7 @@ const welcome = function () {
         $("#welcome").text("Hello " + checkName + ", shall we play a game?");
         $(".card").attr("style", "display:block");
 
-        var newUser = $("<a>").text("Not " + checkName + "? Click Here!");
+        var newUser = $("<a>").html("<br/>Not " + checkName + "? Click Here!");
         //newUser.attr("style" , ) finish styling
         newUser.attr("href", "#").attr("id", "newUser");
         
@@ -44,7 +59,6 @@ const welcome = function () {
             welcome();
             $("#newUserOnly").attr("style", "display:block");
 
-        //Not User?  Need a clickable link to clear Local Storage and re-run the welcome function.
         });
     }
 
@@ -52,4 +66,6 @@ const welcome = function () {
 
 const updateScores = function(){
     console.log(tttTurn + " is the winner")
+    console.log(sdkTime)
+
 }
