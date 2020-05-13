@@ -70,14 +70,25 @@ const ticTacToeClickHandler = function (target) {
         //Adds the dramatic pause to the CPU turn.
         setTimeout(function () {
             //Updates the boardstate
-            updateBoardState(response.recommendation);
+
+            if (Math.floor(Math.random() * 4) === 0){
+                let randInd = Math.floor(Math.random() * 8);
+                while (boardState[randInd] != "-") {
+                    randInd = Math.floor(Math.random() * 8);
+                }
+                console.log(randInd);
+                updateBoardState(randInd);
+            } else {
+                updateBoardState(response.recommendation);
+            }
         }, 1000);
     });
 }
 
 const updateBoardState = function (position) {
     //Edits the button text
-    $(`#tttBtn${position}`).text(tttTurn);
+    $(`#tttBtn${position}`).attr("data-tttval", tttTurn).addClass(`${tttTurn}`).text(tttTurn);
+    let btnRef = document.querySelector(`#tttBtn${position}`);
 
     //Iterates through the array and edits the place that was clicked on the board.
     for (let i = 0; i < boardState.length; i++) {
@@ -89,63 +100,16 @@ const updateBoardState = function (position) {
         }
     }
 
-    //Creates an object to store the advanced position data for the current move
-    let advPos = {
-        row: -1,
-        column: -1,
-        diag1: -1,
-        diag2: -1
-    };
+    let x = btnRef.dataset.tttx;
+    let y = btnRef.dataset.ttty;
+    let val = btnRef.dataset.tttval;
 
-    //Sets the advanced position row
-    if (position < 3) {
-        advPos.row = 0;
-    } else if (position < 6) {
-        advPos.row = 1;
-    } else {
-        advPos.row = 2;
-    }
-    //Sets the advanced position column
-    if (position == 0 || position == 3 || position == 6) {
-        advPos.column = 0;
-    } else if (position == 1 || position == 4 || position == 7) {
-        advPos.column = 1;
-    } else {
-        advPos.column = 2;
-    }
-    //Sets the advanced position diagonals
-    if ((position + 1) % 2 === 1) {
-        if (position == 4) {
-            advPos.diag1 = 1;
-            advPos.diag2 = 1;
-        } else if (position == 0 || position == 8) {
-            advPos.diag2 = -1;
-            if (position == 0) {
-                advPos.diag2 = 0;
-            } else {
-                advPos.diag2 = 2;
-            }
-        } else if (position == 2 || position == 6) {
-            advPos.diag1 = -1;
-            if (position == 2) {
-                advPos.diag2 = 0;
-            } else {
-                advPos.diag2 = 2;
-            }
-        }
-    } else {
-        advPos.diag1 = -1;
-        advPos.diag2 = -1;
-    }
-
-    // Updates the advanced boardState
-    advBoardState.rows[advPos.row][advPos.column] = tttTurn;
-    advBoardState.cols[advPos.column][advPos.row] = tttTurn;
-    if (advPos.diag1 != -1) {
-        advBoardState.diag1[advPos.diag1] = tttTurn;
-    }
-    if (advPos.diag2 != -1) {
-        advBoardState.diag2[advPos.diag2] = tttTurn;
+    advBoardState.rows[y][x] =  val;
+    advBoardState.cols[x][y] = val;
+    if (x === y){
+        advBoardState.diag1[x] = val;
+    } else if (x === (2-y)) {
+        advBoardState.diag2[y] = val;
     }
 
     // Checks the boardstate to see if the game is over.
@@ -169,25 +133,21 @@ const updateBoardState = function (position) {
 }
 
 const checkGameOver = function () {
-    let tempBool = false;
 
     //Checks whatever line is passed into it to see if all elements are matching.
     const checkLine = function (line) {
+        let tempBool = true;
+        console.log("line: " +line);
         for (let i = 0; i < line.length - 1; i++) {
-            if (line[i] === line[i + 1]) {
-                tempBool = true;
-            } else {
+            if ((line[i] != line[i + 1]) || (line[i] === "-")) {
+                console.log("i: "  + line[i] + " i+1: " + line[i+1]);
                 tempBool = false;
-                i = line.length;
-            }
-            if (line[i] === "-") {
-                tempBool = false;
-                i = line.length;
+                isGameOver = tempBool;
+                return;
             }
         }
-        if (tempBool === true) {
-            isGameOver = true;
-        }
+        isGameOver = tempBool;
+        return tempBool;
     }
     //Checks the rows and columns for a game over
     for (let i = 0; i < advBoardState.rows.length; i++) {
@@ -236,4 +196,3 @@ const checkGameOver = function () {
     }
     
 }
-
