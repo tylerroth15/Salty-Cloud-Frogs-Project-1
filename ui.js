@@ -102,15 +102,15 @@ const renderSudoku = function () {
                         .attr("id", `sdkBtn${(y * 9) + x}`)
                         .attr("style", baseStlye)));
             if (j < 6) {
-                baseStlye += "border-bottom: 1px solid black;";
+                baseStlye += "border-bottom: 1px solid #2962ff;";
                 newBtn.attr("style", baseStlye);
             }
             if (colCount == 1) {
-                newBtn.attr("style", `${baseStlye}border-left: 1px solid black;`);
+                newBtn.attr("style", `${baseStlye}border-left: 1px solid #2962ff;`);
             }
             if (colCount == 2) {
                 colCount = -1;
-                newBtn.attr("style", `${baseStlye}border-left: 1px solid black;`);
+                newBtn.attr("style", `${baseStlye}border-left: 1px solid #2962ff;`);
                 sdkBlockCol.append(sdkRow);
                 sdkRow = $("<div>").attr("class", "row").attr("style", "padding: 0px; margin-bottom: 0px;");
             }
