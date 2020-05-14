@@ -108,7 +108,7 @@ const updateBoardState = function (position) {
     advBoardState.cols[x][y] = val;
     if (x === y){
         advBoardState.diag1[x] = val;
-    } else if (x === (2-y)) {
+    } else if (x == (2-y)) {
         advBoardState.diag2[y] = val;
     }
 
@@ -137,10 +137,8 @@ const checkGameOver = function () {
     //Checks whatever line is passed into it to see if all elements are matching.
     const checkLine = function (line) {
         let tempBool = true;
-        console.log("line: " +line);
         for (let i = 0; i < line.length - 1; i++) {
             if ((line[i] != line[i + 1]) || (line[i] === "-")) {
-                console.log("i: "  + line[i] + " i+1: " + line[i+1]);
                 tempBool = false;
                 isGameOver = tempBool;
                 return;

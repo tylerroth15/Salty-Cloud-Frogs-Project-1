@@ -1,5 +1,7 @@
 let currentSelect;
 let sdkBoardState;
+let sdkTimer;
+let sdkTime;
 
 const playSudoku = function () {
 
@@ -49,6 +51,9 @@ const playSudoku = function () {
         ],
     }
 
+    let sdkTimer = setInterval(() => {
+        sdkTime++;
+    }, 1000);
     $.get(`https://cors-anywhere.herokuapp.com/http://www.cs.utep.edu/cheon/ws/sudoku/new/?size=9&level=${diff}`).then(function (response) {
         response = JSON.parse(response).squares;
         for (let i = 0; i < response.length; i++) {
@@ -119,6 +124,10 @@ const checkSolution = function () {
         }
 
         console.log(isSolved);
+        if (isSolved) {
+            clearInterval(sdkTimer);
+            console.log(sdkTime);
+        }
     } else {
         return;
     }
