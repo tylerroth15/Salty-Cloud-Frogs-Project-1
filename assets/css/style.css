@@ -70,7 +70,9 @@ footer{
 .card{
     background-color: transparent !important;
 }
-
+.text{
+    color: yellow !important;
+}
 .gameCard{
     color: #5ff5fd!important;
     font-size: 20px !important;
@@ -80,8 +82,19 @@ footer{
 #game-board,
 .row,
 .col{
-    text-align: center;
+    text-align: center !important;
     
+}
+
+.sdkBorder{
+    color: #2962ff !important;
+    text-align: center;
+}
+
+.sdkInput{
+    color: #ffffff !important;
+    font-size: 20px;
+    text-shadow:  0 0 8px #ff0080, 0 0 10px #ff0080;
 }
 
 .X{
