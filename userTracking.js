@@ -34,8 +34,6 @@ const welcome = function () {
                 $("#welcome").text("Hello " + username + ", shall we play a game?");
                 $(".card").attr("style", "display:block")
 
-                var saveData = [{name, username}, [0,0]]
-                localStorage.setItem(username + " saveData", saveData[1]);
                 return true;
             }
             
@@ -66,6 +64,26 @@ const welcome = function () {
 
 const updateScores = function(){
     console.log(tttTurn + " is the winner")
-    console.log(sdkTime)
+    if (tttTurn == 'X'){
+        console.log("You win!");
+    }else if(tttTurn == 'O'){
+        console.log("You Lose!");
+    }else if(tttTurn =='-'){
+        console.log("You tied!")
+    }
 
 }
+
+
+// $("#highscore").on("click", function (event){
+//     event.preventDefault();
+//     console.log("clicked");
+//     $(".card").attr("style", "display:none")
+//     var username = localStorage.getItem(name);
+//     var tttHighScore = (username+"saveData"[0]);
+//     console.log(tttHighScore);
+    
+    
+
+// });
+    

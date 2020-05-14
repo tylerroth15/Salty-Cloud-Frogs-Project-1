@@ -119,7 +119,7 @@ const updateBoardState = function (position) {
         pageNumber = 1;
         isGameOver = false;
         updateScores(tttTurn);
-        render();
+        // render();
         return;
     }
     // Changes the current turn.
