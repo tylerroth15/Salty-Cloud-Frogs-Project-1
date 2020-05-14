@@ -75,7 +75,7 @@ const renderSudoku = function () {
     let xIndex = 0;
     let yIndex = 0;
     for (let i = 0; i < 9; i++) {
-        let sdkBlockCol = $("<div>").attr("class", "col").attr("style", "border: 2px solid");
+        let sdkBlockCol = $("<div>").attr("class", "col sdkBorder").attr("style", "border: 2px solid");
         let sdkRow = $("<div>").attr("class", "row").attr("style", "padding: 0px; margin-bottom: 0px;");
         let colCount = 0;
 
@@ -87,7 +87,7 @@ const renderSudoku = function () {
             let y =  Math.floor(j / 3) + yIndex;
             sdkRow
                 .append($("<div>")
-                    .attr("class", "col")
+                    .attr("class", "col sdkBorder")
                     .attr("style", "padding: 0px")
                     .attr("id", `sdkB${i}R${Math.floor(j / 3)}C${colCount}`)
                     .append(newBtn
@@ -102,15 +102,15 @@ const renderSudoku = function () {
                         .attr("id", `sdkBtn${(y * 9) + x}`)
                         .attr("style", baseStlye)));
             if (j < 6) {
-                baseStlye += "border-bottom: 1px solid black;";
+                baseStlye += "border-bottom: 1px solid #2962ff;";
                 newBtn.attr("style", baseStlye);
             }
             if (colCount == 1) {
-                newBtn.attr("style", `${baseStlye}border-left: 1px solid black;`);
+                newBtn.attr("style", `${baseStlye}border-left: 1px solid #2962ff;`);
             }
             if (colCount == 2) {
                 colCount = -1;
-                newBtn.attr("style", `${baseStlye}border-left: 1px solid black;`);
+                newBtn.attr("style", `${baseStlye}border-left: 1px solid #2962ff;`);
                 sdkBlockCol.append(sdkRow);
                 sdkRow = $("<div>").attr("class", "row").attr("style", "padding: 0px; margin-bottom: 0px;");
             }
@@ -121,7 +121,7 @@ const renderSudoku = function () {
         if (i == 2 || i == 5 || i == 8) {
             xIndex = 0;
             yIndex += 3;
-            sdkBlockRow.prepend($("<div>").attr("class", "col s4"));
+            sdkBlockRow.prepend($("<div>").attr("class", "col sdkBorder s4"));
             gameDiv.append(sdkBlockRow);
             sdkBlockRow = $("<div>").attr("class", "row").attr("style", "padding: 0px; margin-bottom: 0px;");
         }
@@ -131,7 +131,7 @@ const renderSudoku = function () {
             .attr("class", "Button waves-effect waves-teal btn-flat sdkInput")
             .attr("id", `sdkInput${i}`)
             .attr("data-response", i)
-            .attr("style", "font-size: 30px")
+            .attr("style", "font-size: 30px; color: #ffffff; text-shadow: 0 0 8px #ff0080, 0 0 10px #ff0080;")
             .text(i);
         sdkBlockRow.append(newBtn);
         gameDiv.append(sdkBlockRow);
@@ -140,7 +140,7 @@ const renderSudoku = function () {
     gameDiv.append($("<button>")
             .attr("class", "Button waves-effect waves-teal btn-flat sdkInput")
             .text("Check Puzzle")
-            .css("border", "1px solid black")
+            .css("border", "1px solid #ff0080")
             .attr("id","check-button"));
     $("#select-game").attr("style", "display:none");
 }
