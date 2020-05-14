@@ -32,7 +32,7 @@ const keyHandler = function(e) {
 }
 
 const init = function(){
-    pageNumber = 0;
+    pageNumber = 1;
     welcome();
     render();
     $("#main").on("click", clickHandler);
