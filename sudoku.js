@@ -2,8 +2,11 @@ let currentSelect;
 let sdkBoardState;
 let sdkTimer;
 let sdkTime;
+var feedback = $("<h3>").text("Try Again");
 
 const playSudoku = function () {
+    $("#welcome").attr("style", "display: none");
+
 
     //Will be from 1-3 depending on user choice.
     let diff = 1;
@@ -111,6 +114,9 @@ const updateSquare = function (val) {
 }
 
 const checkSolution = function () {
+    
+    $("#game-board").append(feedback);
+    feedback.attr("style", "display: none");
     if (checkBoardFill()) {
         let isSolved = true;
         for (let i = 0; i < 9; i++) {
@@ -121,12 +127,17 @@ const checkSolution = function () {
             if (isSolved) {
                 isSolved = checkSdkLine(sdkBoardState.blocks[i]);
             }
+            
         }
+
+        feedback.attr("style", "display: block");
+        
 
         console.log(isSolved);
         if (isSolved) {
             clearInterval(sdkTimer);
             console.log(sdkTime);
+            
         }
     } else {
         return;

@@ -7,6 +7,7 @@ let isGameOver = false;
 
 const playTicTacToe = function () {
     // Sets up some variables that we'll need
+    $("#welcome").attr("style", "display: none");
 
     //Creates an array containing 9x"-" for our boardstate which we will use in our queryURL
     boardState = "---------".split('');
@@ -119,7 +120,7 @@ const updateBoardState = function (position) {
         pageNumber = 1;
         isGameOver = false;
         updateScores(tttTurn);
-        // render();
+        //render();
         return;
     }
     // Changes the current turn.
