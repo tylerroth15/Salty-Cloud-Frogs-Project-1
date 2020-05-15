@@ -14,6 +14,9 @@ const clickHandler = function(e) {
                 render();
                 playSudoku();
             }
+            if($(e.target).hasClass("sdkDiff")) {
+                changeDifficulty(e.target);
+            }
         }
         if (pageNumber === 2) {
             ticTacToeClickHandler(e.target);
@@ -24,15 +27,34 @@ const clickHandler = function(e) {
     }
 }
 
+const changeDifficulty = function(target) {
+    let diffText = ["Easy", "Medium", "Hard"];
+    if ($(target).text() === "<") {
+        if (diff > 1) {
+            diff--;
+            $("#diffSpan").text(diffText[diff-1]);
+        }
+    } else {
+        if (diff < 3) {
+            diff++;
+            $("#diffSpan").text(diffText[diff-1]);
+        }
+    }
+}
+
 const keyHandler = function(e) {
     e.preventDefault();
     if (e.key >= 1 && e.key <= 9) {
         sudokuKeyHandler(e.key);
     }
+    if (e.key == "Backspace" || e.key == "Delete") {
+        clearHandler();
+    }
 }
 
 const init = function(){
     pageNumber = 1;
+    diff = 1;
     welcome();
     render();
     $("#main").on("click", clickHandler);

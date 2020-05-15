@@ -84,7 +84,7 @@ const renderSudoku = function () {
         xTrack = xIndex;
         for (let j = 0; j < 9; j++) {
             let newBtn = $("<button>");
-            let baseStlye = "width: 100%; height: 100%; padding: 0px; white-space: pre;";
+            let baseStlye = "width: 100%; height: 100%; padding: 0px; white-space: pre; margin-button: 0px;";
             let x = colCount + xIndex;
             let y =  Math.floor(j / 3) + yIndex;
             sdkRow
@@ -100,7 +100,7 @@ const renderSudoku = function () {
                         .attr("data-sdkblockpos", j)
                         .attr("data-sdkx", x)
                         .attr("data-sdky", y)
-                        .attr("class", "Button waves-effect waves-teal btn-flat")
+                        .attr("class", "Button waves-effect waves-teal btn-flat sdkBtn")
                         .attr("id", `sdkBtn${(y * 9) + x}`)
                         .attr("style", baseStlye)));
             if (j < 6) {
@@ -148,7 +148,11 @@ const renderSudoku = function () {
             .css("border", "1px solid #30ecfb")
             .attr("id","check-button"));
     
-    
+    gameDiv.prepend($("<div>")
+            .attr("class", "col s12")
+            .attr("style", "font-size: 25px; color: #ffffff; text-shadow: 0 0 8px #30ecfb, 0 0 10px #30ecfb;")
+            .attr("id", "timerDiv")
+            .text(""));
     
     $("#select-game").attr("style", "display:none");
 }
