@@ -55,6 +55,7 @@ const renderTicTacToe = function () {
                 // Turn display which includes a span with this ID of turnDisplay.
                 gameDiv
                     .append($("<h1>")
+                        .attr("style", "color: #fbf9c7 !important;  text-shadow:  0 0 8px #fee323, 0 0 10px #fee323 !important")
                         .text("Turn: ")
                         .append($("<span>")
                             .attr("id", "turnDisplay")
@@ -131,7 +132,7 @@ const renderSudoku = function () {
             .attr("class", "Button waves-effect waves-teal btn-flat sdkInput")
             .attr("id", `sdkInput${i}`)
             .attr("data-response", i)
-            .attr("style", "font-size: 30px; color: #ffffff; text-shadow: 0 0 8px #ff0080, 0 0 10px #ff0080;")
+            .attr("style", "font-size: 30px; color: #ffffff; text-shadow: 0 0 8px #30ecfb, 0 0 10px #30ecfb;")
             .text(i);
         sdkBlockRow.append(newBtn);
         gameDiv.append(sdkBlockRow);
@@ -140,7 +141,7 @@ const renderSudoku = function () {
     gameDiv.append($("<button>")
             .attr("class", "Button waves-effect waves-teal btn-flat sdkInput")
             .text("Check Puzzle")
-            .css("border", "1px solid #ff0080")
+            .css("border", "1px solid #30ecfb")
             .attr("id","check-button"));
     $("#select-game").attr("style", "display:none");
 }

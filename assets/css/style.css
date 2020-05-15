@@ -7,6 +7,7 @@
     
 }
 body{
+    background-image: url("https://img.freepik.com/free-photo/black-texture-with-brick-wall-background_35257-311.jpg?size=626&ext=jpg") !important;
     display: flex;
     min-height: 100vh;
     flex-direction: column;
@@ -34,7 +35,8 @@ a{
 
 h1{
     font-size: 50px !important;
-    color: #5ff5fd !important;
+    /* color: #5ff5fd !important; */
+    color: #e3fbfd !important;
     text-shadow: 0 0 8px #5ff5fd, 0 0 10px #5ff5fd !important;
 }
 
@@ -93,9 +95,9 @@ footer{
 }
 
 .sdkInput{
-    color: #ffffff !important;
+    color: #30ecfb !important;
     font-size: 20px;
-    text-shadow:  0 0 8px #ff0080, 0 0 10px #ff0080;
+    text-shadow:  0 0 8px #30ecfb , 0 0 10px #30ecfb;
 }
 
 .X{
@@ -111,5 +113,13 @@ footer{
 #turnDisplay{
     color: #fbf9c7 !important;
     text-shadow:  0 0 8px #fee323, 0 0 10px #fee323;
+}
+
+.sdkUserInput{
+    color: #30ecfb !important;
+    font-size: 30px;
+    font-weight: bold;
+    background-color: transparent;
+    border: 1px solid #2962ff;
 }
 

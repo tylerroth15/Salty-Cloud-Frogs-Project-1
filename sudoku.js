@@ -61,7 +61,7 @@ const playSudoku = function () {
             let y = response[i].y;
             let val = response[i].value;
             let btnRef = $(`#sdkBtn${(y * 9) + x}`);
-            btnRef.text(val).attr("class", "Button btn-flat starter").css("color", "blue").attr("data-sdkval", val);
+            btnRef.text(val).attr("class", "Button btn-flat starter").css("color", "#2962ff").css("font-weight", "bold").css("font-size", "30px").attr("data-sdkval", val);
             sdkBoardState.rows[y][x] = val;
             sdkBoardState.cols[x][y] = val;
             sdkBoardState.blocks[btnRef.attr("data-sdkblock")][btnRef.attr("data-sdkblockpos")] = val;
@@ -103,6 +103,7 @@ const sudokuKeyHandler = function (key) {
 const updateSquare = function (val) {
     let currentBtn = $(`#sdkBtn${currentSelect}`);
     currentBtn.text(val);
+    currentBtn.attr("class", "sdkUserInput");
     currentBtn.attr("data-sdkval", val);
     sdkBoardState.rows[currentBtn.attr("data-sdky")][currentBtn.attr("data-sdkx")] = val;
     sdkBoardState.cols[currentBtn.attr("data-sdkx")][currentBtn.attr("data-sdky")] = val;
