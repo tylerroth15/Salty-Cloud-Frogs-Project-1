@@ -27,7 +27,7 @@ const renderTicTacToe = function () {
     let y = 0;
     for (let i = 0; i < 9; i++) {
         let newBtn = $("<button>");
-        let baseStlye = "width: 150px; height: 150px; font-size: 75px;";
+        let baseStlye = "width: 144px; height: 144px; font-size: 75px;";
         gameDiv
             .append(newBtn
                 .text("")
@@ -72,27 +72,28 @@ const renderMainPage = function () {
 }
 
 const renderSudoku = function () {
-    let sdkBlockRow = $("<div>").attr("class", "row").attr("style", "padding: 0px; margin-bottom: 0px;");
+    let sdkMainCol = $("<div>").attr("class", "col s12 m8 l4 offset-l4 offset-m2")
+    let sdkBlockRow = $("<div>").attr("class", "row").attr("style", "padding: 0px; margin-bottom: 0px; min-height: 70px");
     let xIndex = 0;
     let yIndex = 0;
     for (let i = 0; i < 9; i++) {
-        let sdkBlockCol = $("<div>").attr("class", "col sdkBorder").attr("style", "border: 2px solid");
+        let sdkBlockCol = $("<div>").attr("class", "col s4 sdkBorder").attr("style", "border: 2px solid;");
         let sdkRow = $("<div>").attr("class", "row").attr("style", "padding: 0px; margin-bottom: 0px;");
         let colCount = 0;
 
         xTrack = xIndex;
         for (let j = 0; j < 9; j++) {
             let newBtn = $("<button>");
-            let baseStlye = "width: 50px; height: 50px; padding: 0px;";
+            let baseStlye = "width: 100%; height: 100%; padding: 0px; white-space: pre;";
             let x = colCount + xIndex;
             let y =  Math.floor(j / 3) + yIndex;
             sdkRow
                 .append($("<div>")
-                    .attr("class", "col sdkBorder")
+                    .attr("class", "col s4 sdkBorder")
                     .attr("style", "padding: 0px")
                     .attr("id", `sdkB${i}R${Math.floor(j / 3)}C${colCount}`)
                     .append(newBtn
-                        .text("")
+                        .text(" ")
                         .attr("data-sdkpos", (y * 9) + x)
                         .attr("data-sdkval", "")
                         .attr("data-sdkblock", i)
@@ -122,11 +123,12 @@ const renderSudoku = function () {
         if (i == 2 || i == 5 || i == 8) {
             xIndex = 0;
             yIndex += 3;
-            sdkBlockRow.prepend($("<div>").attr("class", "col sdkBorder s4"));
-            gameDiv.append(sdkBlockRow);
+            // sdkBlockRow.prepend($("<div>").attr("class", "col s4 sdkBorder"));
+            sdkMainCol.append(sdkBlockRow);
             sdkBlockRow = $("<div>").attr("class", "row").attr("style", "padding: 0px; margin-bottom: 0px;");
         }
     }
+    let sdkNumCol = $("<div>").attr("class", "col s12");
     for (let i = 1; i < 10; i++) {
         let newBtn = $("<button>")
             .attr("class", "Button waves-effect waves-teal btn-flat sdkInput")
@@ -134,14 +136,19 @@ const renderSudoku = function () {
             .attr("data-response", i)
             .attr("style", "font-size: 30px; color: #ffffff; text-shadow: 0 0 8px #30ecfb, 0 0 10px #30ecfb;")
             .text(i);
-        sdkBlockRow.append(newBtn);
-        gameDiv.append(sdkBlockRow);
+        sdkNumCol.append(newBtn);
+        
     }
-    gameDiv.append(sdkBlockRow);
+    gameDiv.append(sdkMainCol);
+    gameDiv.append(sdkNumCol);
+
     gameDiv.append($("<button>")
-            .attr("class", "Button waves-effect waves-teal btn-flat sdkInput")
-            .text("Check Puzzle")
+            .attr("class", "Button col s6 m4 l2 offset-l5 offset-m4 offset-s3 waves-effect waves-teal btn-flat sdkInput")
+            .text("Check")
             .css("border", "1px solid #30ecfb")
             .attr("id","check-button"));
+    
+    
+    
     $("#select-game").attr("style", "display:none");
 }
