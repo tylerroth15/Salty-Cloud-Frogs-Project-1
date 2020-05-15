@@ -49,15 +49,24 @@ h3{
 }
 
 h5{
-    font-size: 10px !important;
+    font-size: 15px !important;
+    color: #ffffff !important;
+    text-shadow: 0 0 8px #6dcb22, 0 0 10px #6dcb22 !important;
+
 }
 
 p{
-    font-size: 8px !important;
+    font-size: 14px !important;
+    color: #ffffff !important;
+    text-shadow: 0 0 8px #6dcb22, 0 0 10px #6dcb22 !important;
 }
 
 .link{
-    font-size: 8px !important;
+    font-size: 14px !important;
+    color: #ffffff !important;
+    text-shadow: 0 0 8px #6dcb22, 0 0 10px #6dcb22 !important;
+}
+
 }
 
 label{
