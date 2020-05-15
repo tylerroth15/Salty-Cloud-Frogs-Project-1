@@ -134,7 +134,7 @@ const renderSudoku = function () {
             .attr("class", "Button waves-effect waves-teal btn-flat sdkInput")
             .attr("id", `sdkInput${i}`)
             .attr("data-response", i)
-            .attr("style", "font-size: 30px; color: #ffffff; text-shadow: 0 0 8px #30ecfb, 0 0 10px #30ecfb;")
+            .attr("style", "font-size: 25px; color: #ffffff; text-shadow: 0 0 8px #30ecfb, 0 0 10px #30ecfb;")
             .text(i);
         sdkNumCol.append(newBtn);
         
