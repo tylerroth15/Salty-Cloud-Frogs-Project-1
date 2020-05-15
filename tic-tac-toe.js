@@ -77,7 +77,6 @@ const ticTacToeClickHandler = function (target) {
                 while (boardState[randInd] != "-") {
                     randInd = Math.floor(Math.random() * 8);
                 }
-                console.log(randInd);
                 updateBoardState(randInd);
             } else {
                 updateBoardState(response.recommendation);

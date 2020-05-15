@@ -8,25 +8,21 @@ const welcome = function () {
     $(".card").attr("style", "visibility: hidden")
 
     //welcoming the user to the site.  If there's no value in local storage the user will be greeted as a stranger and asked to enter their username, which is then stored
-    var checkName = localStorage.getItem("name");
-    console.log(checkName);
+    let checkName = localStorage.getItem("name");
     if (checkName == null || checkName == "null" || checkName == "") {
 
         $("#welcome").text("Hi, Stranger!");
 
         $("#enterBtn").on("click", function (event) {
             event.preventDefault();
-            console.log("clicked");
             $("#newUserOnly").attr("style", "display:block")
 
             
-            var username = $("#get-username").val().trim();
+            let username = $("#get-username").val().trim();
 
             if (username === '') {
-                console.log('Oops, looks like something is missing!');
                 return false;
             } else {
-                console.log("Yay, we're good to go!");
 
                 
                 localStorage.setItem("name", username);
@@ -46,7 +42,7 @@ const welcome = function () {
         $("#welcome").text("Hello " + checkName + ", shall we play a game?");
         $(".card").attr("style", "display:block");
 
-        var newUser = $("<a>").html("<br/>Not " + checkName + "? Click Here!");
+        let newUser = $("<a>").html("<br/>Not " + checkName + "? Click Here!");
         //newUser.attr("style" , ) finish styling
         newUser.attr("href", "#").attr("id", "newUser");
         
@@ -64,29 +60,27 @@ const welcome = function () {
 
 const playAgain = function(){
 
-    var playAgain = $("<a>").html("<br/>Would you like to play again? Click Here!");
+    let playAgain = $("<a>").html("<br/>Would you like to play again? Click Here!");
     playAgain.attr("href", "#").attr("id", "playAgain");
     $("#game-board").append(playAgain);
 
-    var goHome = $("<a>").html("<br/> Home");
+    let goHome = $("<a>").html("<br/> Home");
     goHome.attr("href", "#").attr("id", "goHome");
-    var newDiv = $("<div>").attr("style", "padding-top: 25px");
+    let newDiv = $("<div>").attr("style", "padding-top: 25px");
     $("#game-board").append(newDiv);
     newDiv.append(goHome);
 
     $("#playAgain").on("click", function (event) {
         event.preventDefault();
-        console.log("clicked")
         init();
         pageNumber = 2;
         render();
         playTicTacToe();
-        
+    
     });
 
     $("#goHome").on("click", function (event) {
         event.preventDefault();
-        console.log("clicked")
         init();
         pageNumber = 1;
         render();        
@@ -94,27 +88,24 @@ const playAgain = function(){
 }
 
 const updateScores = function(){
-    console.log(tttTurn + " is the winner")
     if (tttTurn == 'X'){
         $("#game-board").empty();
-        var disposition = $("<h3>").text("You win!")
+        let disposition = $("<h3>").text("You win!")
         $("#game-board").append(disposition);
         playAgain();
         
     }else if(tttTurn == 'O'){
         $("#game-board").empty();
-        var disposition = $("<h3>").text("You lose!")
+        let disposition = $("<h3>").text("You lose!")
         $("#game-board").append(disposition);
         playAgain();
 
     }else if(tttTurn =='-'){
         $("#game-board").empty();
-        var disposition = $("<h3>").text("Why bother?!")
+        let disposition = $("<h3>").text("Why bother?!")
         $("#game-board").append(disposition);
         playAgain();
         
     }
 
 }
-
-

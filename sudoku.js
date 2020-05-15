@@ -117,7 +117,6 @@ const clearHandler = function () {
     if (currentSelect == -1) {
         return;
     } else {
-        console.log("Trying to clear");
         updateSquare(" ");
     }
 }
@@ -149,10 +148,23 @@ const checkSolution = function () {
             }
         }
         feedback.attr("style", "visibility: visible");
-        console.log(isSolved);
         if (isSolved) {
             feedback.text("You did it!");
             clearInterval(sdkTimer);
+
+            let goHome = $("<a>").html("<br/> Home");
+
+            goHome.attr("href", "#").attr("id", "goHome").attr("style", "font-size: 18px");
+            // let newDiv = $("<div>").attr("style", "padding-top: 25px");
+            // $("#game-board").after(newDiv);
+            $("#game-board").prepend(goHome);
+            $("#goHome").on("click", function (event) {
+                event.preventDefault();
+                init();
+                pageNumber = 1;
+                render();        
+            });
+
         } else {
             feedback.text("Try Again");
             setTimeout(function() {
