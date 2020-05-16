@@ -54,9 +54,6 @@ const keyHandler = function(e) {
         if (pageNumber === 3) {
             checkSolution();
         }
-        if (pageNumber === 0) {
-            userLogin();
-        }
     }
 }
 

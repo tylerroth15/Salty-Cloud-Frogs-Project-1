@@ -10,35 +10,12 @@ const welcome = function () {
     //welcoming the user to the site.  If there's no value in local storage the user will be greeted as a stranger and asked to enter their username, which is then stored
     let checkName = localStorage.getItem("name");
     if (checkName == null || checkName == "null" || checkName == "") {
-
         $("#welcome").text("Hi, Stranger!");
 
-        $("#enterBtn").on("click", function (event) {
-            event.preventDefault();
-            $("#newUserOnly").attr("style", "display:block")
-
-            
-            let username = $("#get-username").val().trim();
-
-            if (username === '') {
-                return false;
-            } else {
-
-                
-                localStorage.setItem("name", username);
-                $("#newUserOnly").attr("style", "display: none");
-                $("#welcome").text("Hello " + username + ", shall we play a game?");
-                $(".card").attr("style", "display:block")
-
-                return true;
-            }
-            
-            
-
-        });
+        $("#enterBtn").on("click", userLogin);
+        $("#get-username").on("keydown", enterKeyHandler);
     } else {
         //Display "Hello " + username + " welcome back!"
-        pageNumber = 0;
         $("#newUserOnly").attr("style", "display: none");
         $("#welcome").text("Hello " + checkName + ", shall we play a game?");
         $(".card").attr("style", "display:block");
@@ -49,18 +26,46 @@ const welcome = function () {
         
         $("#welcome").append(newUser);
         
-        $("#newUser").on("click", userLogin);
+        $("#newUser").on("click", storedLogin);
     }
 
 }
 
+const enterKeyHandler = function (event) {
+    if(event.key == "Enter") {
+        $("#enterBtn").click();
+    }
+}
+
 const userLogin = function (event) {
-    pageNumber = 1;
+    event.preventDefault();
+    $("#newUserOnly").attr("style", "display:block")
+
+    
+    let username = $("#get-username").val().trim();
+
+    if (username === '') {
+        return false;
+    } else {
+
+        
+        localStorage.setItem("name", username);
+        $("#newUserOnly").attr("style", "display: none");
+        $("#welcome").text("Hello " + username + ", shall we play a game?");
+        $(".card").attr("style", "display:block")
+
+        return true;
+    }
+}
+
+const storedLogin = function (event) {
     event.preventDefault();
     localStorage.setItem("name", "");
     welcome();
     $("#newUserOnly").attr("style", "display:block");
 }
+
+
 
 const playAgain = function(){
 
