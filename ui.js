@@ -139,6 +139,13 @@ const renderSudoku = function () {
         sdkNumCol.append(newBtn);
         
     }
+    sdkNumCol.append(
+        $("<button>")
+            .attr("class", "Button waves-effect waves-teal btn-flat sdkInput")
+            .attr("id", `clearButton`)
+            .attr("data-response", "clear")
+            .attr("style", "font-size: 25px; color: #ffffff; text-shadow: 0 0 8px #30ecfb, 0 0 10px #30ecfb;")
+            .text("X"));
     gameDiv.append(sdkMainCol);
     gameDiv.append(sdkNumCol);
 
