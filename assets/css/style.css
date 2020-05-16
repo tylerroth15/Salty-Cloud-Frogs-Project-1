@@ -1,9 +1,7 @@
 .container{
     margin: auto;
     color:#ff0070;
-    /* box-shadow: 0 0 10px #4666ff, 0 0 10px #4666ff; */
     text-shadow: 0 0 8px #ff0080, 0 0 10px #ff0080;
-    /* font-size: 80px; */
     
 }
 body{
@@ -14,10 +12,6 @@ body{
 }
 
 
-/* .card{
-    background-color: black;
-    color: #ff0070
-} */
 main{
     flex: 1 0 auto;
 }
@@ -65,8 +59,6 @@ p{
     font-size: 14px !important;
     color: #ffffff !important;
     text-shadow: 0 0 8px #6dcb22, 0 0 10px #6dcb22 !important;
-}
-
 }
 
 label{
