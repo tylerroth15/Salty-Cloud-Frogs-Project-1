@@ -5,7 +5,7 @@ const ties = 0;
 const welcome = function () {
 
     //add lines for hiding the game cards
-    $(".card").attr("style", "visibility: hidden")
+    $(".card").attr("style", "display: none")
 
     //welcoming the user to the site.  If there's no value in local storage the user will be greeted as a stranger and asked to enter their username, which is then stored
     let checkName = localStorage.getItem("name");

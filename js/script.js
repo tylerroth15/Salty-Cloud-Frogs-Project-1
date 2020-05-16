@@ -44,10 +44,10 @@ const changeDifficulty = function (target) {
 
 const keyHandler = function (e) {
     e.preventDefault();
-    if (e.key >= 1 && e.key <= 9) {
-        sudokuKeyHandler(e.key);
-    }
     if (pageNumber === 3) {
+        if (e.key >= 1 && e.key <= 9) {
+            sudokuKeyHandler(e.key);
+        }
         if (e.key == "Backspace" || e.key == "Delete") {
             clearHandler();
         }
@@ -61,11 +61,11 @@ const init = function () {
     pageNumber = 1;
     diff = 1;
     welcome();
-    render();
-    $("#main").on("click", clickHandler);
-    $("#main").on("keydown", keyHandler);
+    render();   
 }
 
 
 //Calls the render function in ui.js and sets up the clickhandler.
 $(document).ready(init);
+$("#main").on("click", clickHandler);
+$("#main").on("keydown", keyHandler);
