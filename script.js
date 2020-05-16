@@ -1,63 +1,63 @@
-const clickHandler = function(e) {
+const clickHandler = function (e) {
     e.preventDefault();
     //Checks to see if what was clicked was a button.
-    if ($(e.target).hasClass("Button")){
+    if ($(e.target).hasClass("Button")) {
         //Checks the page number which was setup in ui.js then calls the appropriate handler for the page.
-        if(pageNumber === 1) {
-            if($(e.target).attr("id") === "tttBtn") {
+        if (pageNumber === 1) {
+            if ($(e.target).attr("id") === "tttBtn") {
                 pageNumber = 2;
                 render();
                 playTicTacToe();
             }
-            if($(e.target).attr("id") === "sdkBtn") {
+            if ($(e.target).attr("id") === "sdkBtn") {
                 pageNumber = 3;
                 render();
                 playSudoku();
             }
-            if($(e.target).hasClass("sdkDiff")) {
+            if ($(e.target).hasClass("sdkDiff")) {
                 changeDifficulty(e.target);
             }
         }
         if (pageNumber === 2) {
             ticTacToeClickHandler(e.target);
-        } 
+        }
         if (pageNumber === 3) {
             sudokuClickHandler(e.target);
         }
     }
 }
 
-const changeDifficulty = function(target) {
+const changeDifficulty = function (target) {
     let diffText = ["Easy", "Medium", "Hard"];
     if ($(target).text() === "<") {
         if (diff > 1) {
             diff--;
-            $("#diffSpan").text(diffText[diff-1]);
+            $("#diffSpan").text(diffText[diff - 1]);
         }
     } else {
         if (diff < 3) {
             diff++;
-            $("#diffSpan").text(diffText[diff-1]);
+            $("#diffSpan").text(diffText[diff - 1]);
         }
     }
 }
 
-const keyHandler = function(e) {
+const keyHandler = function (e) {
     e.preventDefault();
     if (e.key >= 1 && e.key <= 9) {
         sudokuKeyHandler(e.key);
     }
-    if (e.key == "Backspace" || e.key == "Delete") {
-        clearHandler();
-    }
-    if (e.key == "Enter") {
-        if (pageNumber === 3) {
+    if (pageNumber === 3) {
+        if (e.key == "Backspace" || e.key == "Delete") {
+            clearHandler();
+        }
+        if (e.key == "Enter") {
             checkSolution();
         }
     }
 }
 
-const init = function(){
+const init = function () {
     pageNumber = 1;
     diff = 1;
     welcome();
