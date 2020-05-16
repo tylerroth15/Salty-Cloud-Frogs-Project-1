@@ -59,7 +59,6 @@ const keyHandler = function (e) {
 
 const init = function () {
     pageNumber = 1;
-    diff = 1;
     welcome();
     render();   
 }
