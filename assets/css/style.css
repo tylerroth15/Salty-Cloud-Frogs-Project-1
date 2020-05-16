@@ -101,6 +101,10 @@ footer{
     text-shadow:  0 0 8px #30ecfb , 0 0 10px #30ecfb;
 }
 
+#diffSpan{
+    color: #30ecfb !important;
+    text-shadow:  0 0 8px #30ecfb , 0 0 10px #30ecfb;
+}
 .X{
     color:#ed57ff;
     text-shadow:  0 0 8px #ef9aff, 0 0 10px #ef9aff;
