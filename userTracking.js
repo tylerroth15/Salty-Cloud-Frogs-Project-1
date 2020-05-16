@@ -99,19 +99,19 @@ const playAgain = function(){
 const updateScores = function(){
     if (tttTurn == 'X'){
         $("#game-board").empty();
-        let disposition = $("<h3>").text("You win!")
+        let disposition = $("<h3>").text("Congratulations, you win!")
         $("#game-board").append(disposition);
         playAgain();
         
     }else if(tttTurn == 'O'){
         $("#game-board").empty();
-        let disposition = $("<h3>").text("You lose!")
+        let disposition = $("<h3>").text("You lose! Try Again!")
         $("#game-board").append(disposition);
         playAgain();
 
     }else if(tttTurn =='-'){
         $("#game-board").empty();
-        let disposition = $("<h3>").text("Why bother?!")
+        let disposition = $("<h3>").text("You tied, nice try!")
         $("#game-board").append(disposition);
         playAgain();
         
