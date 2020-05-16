@@ -90,6 +90,9 @@ const sudokuClickHandler = function (target) {
         checkSolution();
         return;
     }
+    if($(target).attr("id") === "clearButton") {
+        clearHandler();
+    }
     if ($(target).hasClass("starter")) {
         currentSelect = -1;
         return;
