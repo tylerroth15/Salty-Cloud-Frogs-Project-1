@@ -2,7 +2,7 @@ let currentSelect;
 let sdkBoardState;
 let sdkTimer;
 let sdkTime;
-let diff;
+let diff = 1;
 let feedback = $("<h3>")
     .attr("class", "col s12")
     
