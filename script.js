@@ -50,6 +50,11 @@ const keyHandler = function(e) {
     if (e.key == "Backspace" || e.key == "Delete") {
         clearHandler();
     }
+    if (e.key == "Enter") {
+        if (pageNumber === 3) {
+            checkSolution();
+        }
+    }
 }
 
 const init = function(){

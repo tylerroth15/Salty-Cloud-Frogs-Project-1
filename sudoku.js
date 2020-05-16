@@ -1,19 +1,19 @@
 let currentSelect;
 let sdkBoardState;
 let sdkTimer;
-let sdkTime = 0;
+let sdkTime;
 let diff;
 let feedback = $("<h3>")
-    .text("")
     .attr("class", "col s12")
-    .attr("style", "visibility: hidden");
+    
 
 const playSudoku = function () {
     $("#welcome").attr("style", "display: none");
+    feedback.text("").attr("style", "visibility: hidden");
     $("#game-board").append(feedback);
-
-    //Will be from 1-3 depending on user choice.
+    
     isBoardFilled = false;
+    sdkTime = 0;
 
     sdkBoardState = {
         rows: [
@@ -135,7 +135,6 @@ const updateSquare = function (val) {
 }
 
 const checkSolution = function () {    
-    feedback.attr("style", "display: none");
     if (checkBoardFill()) {
         let isSolved = true;
         for (let i = 0; i < 9; i++) {
@@ -155,8 +154,6 @@ const checkSolution = function () {
             let goHome = $("<a>").html("<br/> Home");
 
             goHome.attr("href", "#").attr("id", "goHome").attr("style", "font-size: 18px");
-            // let newDiv = $("<div>").attr("style", "padding-top: 25px");
-            // $("#game-board").after(newDiv);
             $("#game-board").prepend(goHome);
             $("#goHome").on("click", function (event) {
                 event.preventDefault();
