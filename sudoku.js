@@ -1,12 +1,18 @@
 let currentSelect;
 let sdkBoardState;
 let sdkTimer;
-let sdkTime;
+let sdkTime = 0;
+let diff;
+let feedback = $("<h3>")
+    .text("")
+    .attr("class", "col s12")
+    .attr("style", "visibility: hidden");
 
 const playSudoku = function () {
+    $("#welcome").attr("style", "display: none");
+    $("#game-board").append(feedback);
 
     //Will be from 1-3 depending on user choice.
-    let diff = 1;
     isBoardFilled = false;
 
     sdkBoardState = {
@@ -51,9 +57,6 @@ const playSudoku = function () {
         ],
     }
 
-    let sdkTimer = setInterval(() => {
-        sdkTime++;
-    }, 1000);
     $.get(`https://cors-anywhere.herokuapp.com/http://www.cs.utep.edu/cheon/ws/sudoku/new/?size=9&level=${diff}`).then(function (response) {
         response = JSON.parse(response).squares;
         for (let i = 0; i < response.length; i++) {
@@ -61,11 +64,21 @@ const playSudoku = function () {
             let y = response[i].y;
             let val = response[i].value;
             let btnRef = $(`#sdkBtn${(y * 9) + x}`);
-            btnRef.text(val).attr("class", "Button btn-flat starter").css("color", "#2962ff").css("font-weight", "bold").css("font-size", "30px").attr("data-sdkval", val);
+            btnRef.text(val).attr("class", "Button btn-flat starter sdkBtn").attr("data-sdkval", val);
             sdkBoardState.rows[y][x] = val;
             sdkBoardState.cols[x][y] = val;
             sdkBoardState.blocks[btnRef.attr("data-sdkblock")][btnRef.attr("data-sdkblockpos")] = val;
         }
+        sdkTimer = setInterval(() => {
+            sdkTime++;
+            if (sdkTime < 60) {
+                $("#timerDiv").text(`${sdkTime}s`);
+            } else if (sdkTime < 3600) {
+                $("#timerDiv").text(`${Math.floor(sdkTime/60)}m ${sdkTime%60}s`);
+            } else {
+                $("#timerDiv").text(`${Math.floor(sdkTime/3600)}h ${Math.floor((sdkTime%3600)/60)}m ${sdkTime%60}s`);
+            }
+        }, 1000);
     });
 }
 
@@ -100,18 +113,29 @@ const sudokuKeyHandler = function (key) {
     }
 }
 
+const clearHandler = function () {
+    if (currentSelect == -1) {
+        return;
+    } else {
+        updateSquare(" ");
+    }
+}
+
 const updateSquare = function (val) {
     let currentBtn = $(`#sdkBtn${currentSelect}`);
     currentBtn.text(val);
-    currentBtn.attr("class", "sdkUserInput");
-    currentBtn.attr("data-sdkval", val);
-    sdkBoardState.rows[currentBtn.attr("data-sdky")][currentBtn.attr("data-sdkx")] = val;
-    sdkBoardState.cols[currentBtn.attr("data-sdkx")][currentBtn.attr("data-sdky")] = val;
-    sdkBoardState.blocks[currentBtn.attr("data-sdkblock")][currentBtn.attr("data-sdkblockpos")] = val;
+    if (!currentBtn.hasClass("sdkUserInput")) {
+        currentBtn.addClass("sdkUserInput");
+    }
+    currentBtn.attr("data-sdkval", val.trim());
+    sdkBoardState.rows[currentBtn.attr("data-sdky")][currentBtn.attr("data-sdkx")] = val.trim();
+    sdkBoardState.cols[currentBtn.attr("data-sdkx")][currentBtn.attr("data-sdky")] = val.trim();
+    sdkBoardState.blocks[currentBtn.attr("data-sdkblock")][currentBtn.attr("data-sdkblockpos")] = val.trim();
     currentSelect = -1;
 }
 
-const checkSolution = function () {
+const checkSolution = function () {    
+    feedback.attr("style", "display: none");
     if (checkBoardFill()) {
         let isSolved = true;
         for (let i = 0; i < 9; i++) {
@@ -123,17 +147,36 @@ const checkSolution = function () {
                 isSolved = checkSdkLine(sdkBoardState.blocks[i]);
             }
         }
-
-        console.log(isSolved);
+        feedback.attr("style", "visibility: visible");
         if (isSolved) {
+            feedback.text("You did it!");
             clearInterval(sdkTimer);
-            console.log(sdkTime);
+
+            let goHome = $("<a>").html("<br/> Home");
+
+            goHome.attr("href", "#").attr("id", "goHome").attr("style", "font-size: 18px");
+            // let newDiv = $("<div>").attr("style", "padding-top: 25px");
+            // $("#game-board").after(newDiv);
+            $("#game-board").prepend(goHome);
+            $("#goHome").on("click", function (event) {
+                event.preventDefault();
+                init();
+                pageNumber = 1;
+                render();        
+            });
+
+        } else {
+            feedback.text("Try Again");
+            setTimeout(function() {
+                feedback.attr("style", "visibility: hidden");
+            }, 1500);
         }
     } else {
         return;
     }
 
 }
+
 const checkSdkLine = function (array) {
     let arrayClear = true;
     for (let i = 0; i < array.length; i++) {
