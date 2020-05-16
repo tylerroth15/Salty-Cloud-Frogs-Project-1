@@ -4,9 +4,9 @@
 Tyler, David, and Chris
 
 ## Project Roles:
-Product Owner - David
-Repo Owner - Tyler
-Scrum Master - Chris
+Product Owner: David
+Repo Owner: Tyler
+Scrum Master: Chris
 
 ## Minimum Viable Product:
 As a user I want to be able to play 2 different in-browser games(Tic Tac Toe, Sudoku).
