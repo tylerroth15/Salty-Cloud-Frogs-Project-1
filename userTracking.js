@@ -38,6 +38,7 @@ const welcome = function () {
         });
     } else {
         //Display "Hello " + username + " welcome back!"
+        pageNumber = 0;
         $("#newUserOnly").attr("style", "display: none");
         $("#welcome").text("Hello " + checkName + ", shall we play a game?");
         $(".card").attr("style", "display:block");
@@ -47,15 +48,18 @@ const welcome = function () {
         newUser.attr("href", "#").attr("id", "newUser");
         
         $("#welcome").append(newUser);
-        $("#newUser").on("click", function (event) {
-            event.preventDefault();
-            localStorage.setItem("name", "");
-            welcome();
-            $("#newUserOnly").attr("style", "display:block");
-
-        });
+        
+        $("#newUser").on("click", userLogin);
     }
 
+}
+
+const userLogin = function (event) {
+    pageNumber = 1;
+    event.preventDefault();
+    localStorage.setItem("name", "");
+    welcome();
+    $("#newUserOnly").attr("style", "display:block");
 }
 
 const playAgain = function(){

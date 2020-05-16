@@ -148,6 +148,7 @@ const checkGameOver = function () {
         isGameOver = tempBool;
         return tempBool;
     }
+
     //Checks the rows and columns for a game over
     for (let i = 0; i < advBoardState.rows.length; i++) {
         //Checks row i for a game over
@@ -155,6 +156,7 @@ const checkGameOver = function () {
 
         //Exits the loop and function if game over is found.
         if (isGameOver) {
+            setTimeout(function(){}, 1500);
             return;
         }
         //Checks col i for a game over
@@ -162,6 +164,7 @@ const checkGameOver = function () {
 
         //Exits the loop and function if game over is found.
         if (isGameOver) {
+            setTimeout(function(){}, 1500);
             return;
         }
         
@@ -172,12 +175,14 @@ const checkGameOver = function () {
         checkLine(advBoardState.diag1);
     }
     if (isGameOver) {
+        setTimeout(function(){}, 1500);
         return;
     }
     for (let i = 0; i < advBoardState.diag2.length - 1; i++) {
         checkLine(advBoardState.diag2);
     }
     if (isGameOver) {
+        setTimeout(function(){}, 1500);
         return;
     }
 
